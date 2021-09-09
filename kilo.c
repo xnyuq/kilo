@@ -176,9 +176,10 @@ int getWindowSize(int *rows, int *cols) {
     struct winsize ws;
 
     if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1 || ws.ws_col == 0) {
-        /* move cursor 999 right and 999 down */
+        /*ioctl doesn't guarantee to work on all system*/
+        /*so we move the cursor to the last cell and report the cursor position*/
         if (write(STDOUT_FILENO, "\x1b[999C\x1b[999B", 12) != 12) return -1;
-        return getCursorPosition(rows, cols);
+        return getCursorPosition(rows, cols); 
     }
     else {
         *cols = ws.ws_col;
@@ -198,9 +199,8 @@ struct abuf {
 #define ABUF_INIT {NULL, 0};
 
 void abAppend(struct abuf *ab, const char *s, int len) {
-    char *new = realloc(ab->b, ab->len + len);
-    memcpy(&new[ab->len], s, len);
-    ab->b = new;
+    ab->b = realloc(ab->b, ab->len + len);
+    memcpy(&ab->b[ab->len], s, len);
     ab->len += len;
 }
 
