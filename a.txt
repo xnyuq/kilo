@@ -1,0 +1,5 @@
+Home: /x1b[1~ or /x1b[7~
+Del: /x1b[3~
+End: /x1b[4~ or /x1b[8~
+PgUp: /x1b[6~
+PgDn: /x1b[7~
