@@ -1,6 +1,6 @@
 # Kilo
 ## _Your own text editor_
-Kilo is a minimal text editor for linux written in C with no dependencies or external libraries.
+Kilo is a minimal text editor for linux written in C with no dependencies or external libraries.\
 Based on the original [kilo](https://github.com/antirez/kilo) and the tutorial [Build Your Own Text Editor](https://viewsourcecode.org/snaptoken/kilo/).
 ### Screenshot
 ![Screenshot](https://raw.githubusercontent.com/xnyuq/kilo/main/img/screenshot.png)
